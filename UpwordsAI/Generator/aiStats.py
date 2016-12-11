@@ -12,6 +12,3 @@ Stats:  Timing
 this wii generate text file
         
 '''
-
-
-class AIStats():

@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Nov 17 20:31:24 2016
-
-@author: Parth Bhatt
-"""
-import dictionary, math
+'''
+This class stores in a file the count of the words used by all players in all games.
+It can load and update the word frequency file wordfreq.txt.
+'''
+import math
+from Generator import dictionary
 
 class Wordfrequency:
     
-    FILENAME = "Generator/wordfreq.txt"
-    DICTIONARY = "Generator/upwords_usage.txt"
+    FILENAME = "..\\Generator\\wordfreq.txt"
+    DICTIONARY = "..\\Generator\\upwords_usage.txt"
     
     
     def __init__(self):
@@ -40,7 +40,7 @@ class Wordfrequency:
             freqFile.write(word+" "+str(self.count[word])+"\n")
     
     def wordPlayed(self, word):
-        if self.count.has_key(word):
+        if word in self.count:
             self.count[word] += 1
         else:
             self.count[word] = 1
@@ -120,4 +120,126 @@ class Wordfrequency:
         
         print("Top 10 Most Frequent 3-Letter Words: ")
         i = 1
+        for w in sorted(threeLetters, key = threeLetters.get, reverse = True):
+            self.printFreq(i, w, threeLetters[w])
+            i += 1
+            if i > 10:
+                break
+        print("")
         
+        print("Top 10 Most Frequent 4-Letter Words: ")
+        i = 1
+        for w in sorted(fourLetters, key = fourLetters.get, reverse = True):
+            self.printFreq(i, w, fourLetters[w])
+            i += 1
+            if i > 10:
+                break
+        print("")
+        
+        print("Top 10 Most Frequent 5-Letter Words: ")
+        i = 1
+        for w in sorted(fiveLetters, key = fiveLetters.get, reverse = True):
+            self.printFreq(i, w, fiveLetters[w])
+            i += 1
+            if i > 10:
+                break
+        print("")
+        
+        print("Top 10 Most Common Words with 'Q'")
+        i = 1
+        for w in sorted(wordsWithQ, key = wordsWithQ.get, reverse = True):
+            self.printFreq(i, w, wordsWithQ[w])
+            i += 1
+            if i > 10:
+                break
+        print("")
+        
+        print("Top 10 Most Common Words with 'Z'")
+        i = 1
+        for w in sorted(wordsWithZ, key = wordsWithZ.get, reverse = True):
+            self.printFreq(i, w, wordsWithZ[w])
+            i += 1
+            if i > 10:
+                break
+        print("")
+        
+        print("Top 10 Most Common Words with 'J'")
+        i = 1
+        for w in sorted(wordsWithJ, key = wordsWithJ.get, reverse = True):
+            self.printFreq(i, w, wordsWithJ[w])
+            i += 1
+            if i > 10:
+                break
+        print("")
+        
+        print("Top 10 Most Common Words with 'X'")
+        i = 1
+        for w in sorted(wordsWithX, key = wordsWithX.get, reverse = True):
+            self.printFreq(i, w, wordsWithX[w])
+            i += 1
+            if i > 10:
+                break
+        print("")
+        
+        print("Top 10 Most Common Words with 'K'")
+        i = 1
+        for w in sorted(wordsWithK, key = wordsWithK.get, reverse = True):
+            self.printFreq(i, w, wordsWithK[w])
+            i += 1
+            if i > 10:
+                break
+        print("")
+        
+        print("Top 10 Most Common Words with 'Y'")
+        i = 1
+        for w in sorted(wordsWithY, key = wordsWithY.get, reverse = True):
+            self.printFreq(i, w, wordsWithY[w])
+            i += 1
+            if i > 10:
+                break
+        print("")
+        
+        print("Top 10 Most Common Words with 'V'")
+        i = 1
+        for w in sorted(wordsWithV, key = wordsWithV.get, reverse = True):
+            self.printFreq(i, w, wordsWithV[w])
+            i += 1
+            if i > 10:
+                break
+        print("")
+        
+        print("Top 10 Most Common Words with 'F'")
+        i = 1
+        for w in sorted(wordsWithF, key = wordsWithF.get, reverse = True):
+            self.printFreq(i, w, wordsWithF[w])
+            i += 1
+            if i > 10:
+                break
+        print("")
+        
+        print("Top 10 Most Common Words with 'W'")
+        i = 1
+        for w in sorted(wordsWithW, key = wordsWithW.get, reverse = True):
+            self.printFreq(i, w, wordsWithW[w])
+            i += 1
+            if i > 10:
+                break
+        print("")
+        
+        print("Top 10 Most Common Words with 'C'")
+        i = 1
+        for w in sorted(wordsWithC, key = wordsWithC.get, reverse = True):
+            self.printFreq(i, w, wordsWithC[w])
+            i += 1
+            if i > 10:
+                break
+        print("")
+        
+    def printFreq(self, i, w, count):
+        difficulty = int(((10 - math.log(self.dict.words[w]))/6.5)*10.0)
+        print (str(i) + ")\t" + w + "\t\tused" + str(count) + "times. At difficulty level: " + str(difficulty))
+    
+#   Running word frequency on its own provides statistics
+    if __name__ == '__main__':
+        wordfreq = Wordfrequency()
+        wordfreq.displayStats()

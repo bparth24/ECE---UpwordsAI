@@ -3,21 +3,23 @@
 Initial distribution of tiles(letter)
 This file maintain the bag of all characters or tiles which we are using through out the game.
 
-Methods: 	--> Explanation
+Methods:     --> Explanation
 
-add() 	--> Initially add all tiles to the bag.
-shuffle() 	--> Shuffule the bag.
-grab()	--> Grab the tiles from the bag randomly.
-isEmpty()	--> Check whether bag is empty or not.
-putBack()	--> Swapping of tiles from the tray and bag. But if anybody uses swap then it will count as one move. 
+add()         --> Initially add all tiles to the bag.
+shuffle()     --> Shuffule the bag.
+grab()        --> Grab the tiles from the bag randomly.
+isEmpty()    --> Check whether bag is empty or not.
+putBack()    --> Swapping of tiles from the tray and bag. But if anybody uses swap then it will count 
+                as one move. 
 '''
 
 import random, tile
 
 class Bag:
+
     def __init__(self):
-        print("Bag__init__:")
         self.tiles = []
+
         # Add initial distribution of tiles.
         self.add('A', 7)
         self.add('B', 3)
@@ -45,15 +47,16 @@ class Bag:
         self.add('X', 1)
         self.add('Y', 2)
         self.add('Z', 1)
+
         random.shuffle(self.tiles)
 
-	# Add all the letter tiles into bag.
+    # Add all the letter tiles into bag.
     def add(self, ltr, n):
         for i in range(n):
             self.tiles.append(tile.Tile(ltr))
-   
+    
     def shuffle(self):
-       random.shuffle(self.tiles)
+        random.shuffle(self.tiles)
 
     def isEmpty(self):
         if len(self.tiles) == 0:
@@ -63,7 +66,7 @@ class Bag:
     def putBack(self, tile):
         self.tiles.append(tile)
   
-#   Grabs one tile from the bag and returns it (None if there aren't any left).
+    #   Grabs one tile from the bag and returns it (None if there aren't any left).
     def grab(self):
         if self.isEmpty():
             return None
@@ -71,8 +74,8 @@ class Bag:
             tile = self.tiles[0]
             self.tiles = self.tiles[1:]
             return tile
-#TEST		
-if __name__ == '__main__':	
+#TEST        
+if __name__ == '__main__':    
     
     thebag = Bag()
     print(thebag.isEmpty())
